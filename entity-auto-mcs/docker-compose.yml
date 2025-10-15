@@ -7,19 +7,33 @@ services:
       APP_PORT: 8080
 
   app:
-    image: macarooniman/auto-mcs:2.3.4@sha256:d6c47811dbd1c6d5dfd399820e1fafd77ba0dbb71be3693af55c9312a64d2f26
+    image: macarooniman/auto-mcs:2.3.4@sha256:d8bdf17740cbc3efc8a0baf1127ad2f1fe0a3d9afc175f2998b529c4049a6fa3
     command: [
       "auto-mcs-ttyd",
+
       "-W",
+
+
 
       "-t", "disableLeaveAlert=true",
 
+
+
       "-t", "titleFixed=auto-mcs",
+
+
+
+
 
       "-t", "fontSize=20",
 
 
+
+
+
       "-t", "theme={\"background\": \"#1A1A1A\"}",
+
+
 
 
 
@@ -64,3 +78,5 @@ services:
     ports:
       - "7001:7001"
       - "25565:25565"
+
+
