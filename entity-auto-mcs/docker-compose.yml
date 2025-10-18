@@ -1,4 +1,4 @@
-version: "3.7"
+version: "3"
 
 services:
   app_proxy:
@@ -8,77 +8,20 @@ services:
 
   app:
     image: macarooniman/auto-mcs:2.3.4@sha256:d8bdf17740cbc3efc8a0baf1127ad2f1fe0a3d9afc175f2998b529c4049a6fa3
-    command: [
-      "auto-mcs-ttyd",
+    container_name: auto-mcs
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
 
+    environment:
 
-      "-W",
+      # Default web interface port
+      WEB_PORT: "8080"
 
+      # Change the web interface credentials
+      WEB_USERNAME: "root"
+      WEB_PASSWORD: "auto-mcs"
 
-
-
-
-      "-t", "disableLeaveAlert=true",
-
-
-
-
-
-
-      "-t", "titleFixed=auto-mcs",
-
-
-
-
-
-
-
-
-      "-t", "fontSize=20",
-
-
-
-
-
-      "-t", "theme={\"background\": \"#1A1A1A\"}",
-
-
-
-
-
-
-
-
-      "-p", "8080",
-      "-c", "root:auto-mcs",
-
-
-      "tmux", "-u", "-2", "new", "-A",
-
-
-
-
-
-      "-s", "auto-mcs",
-
-
-
-
-
-
-
-
-
-
-      "-c", ".",
-      "./auto-mcs"
-
-
-
-
-
-
-    ]
     stdin_open: true
     tty: true
     restart: on-failure
@@ -87,7 +30,3 @@ services:
     ports:
       - "7001:7001"
       - "25565:25565"
-
-
-
-
